@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docbase="/home/nicu/Desktop/cards"
+   sodipodi:docname="back2.svg"
+   inkscape:version="0.41"
+   sodipodi:version="0.32"
+   version="1.0"
+   x="0.0000000"
+   y="0.0000000"
+   width="140.00000"
+   preserveAspectRatio="xMinYMin meet"
+   viewBox="0 0 140 190"
+   height="190.00000"
+   id="svg2">
+  
+  <sodipodi:namedview
+     inkscape:current-layer="svg2"
+     inkscape:window-y="26"
+     inkscape:window-x="0"
+     inkscape:cy="95.000001"
+     inkscape:cx="70.000003"
+     inkscape:zoom="1.9105263"
+     inkscape:window-height="791"
+     inkscape:window-width="1152"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <defs
+     id="defs3">
+    <linearGradient
+       id="linearGradient8303">
+      <stop
+         style="stop-color:#000086;stop-opacity:1.0000000;"
+         offset="0.0000000"
+         id="stop8314" />
+      <stop
+         style="stop-color:#005aff;stop-opacity:1.0000000;"
+         offset="1.0000000"
+         id="stop8316" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2060">
+      <stop
+         style="stop-color:#ebf0d0;stop-opacity:1.0000000;"
+         offset="0.0000000"
+         id="stop2062" />
+      <stop
+         style="stop-color:#ffffeb;stop-opacity:1.0000000;"
+         offset="1.0000000"
+         id="stop2064" />
+    </linearGradient>
+    <linearGradient
+       x1="2.0000000"
+       y1="63.099518"
+       x2="109.00000"
+       y2="128.69501"
+       id="linearGradient4853"
+       xlink:href="#linearGradient2060"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0.000000,-1.000000)" />
+    <linearGradient
+       x1="138.23376"
+       y1="146.61710"
+       x2="36.519855"
+       y2="18.728254"
+       id="linearGradient8318"
+       xlink:href="#linearGradient8303"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.854242,1.170628)" />
+    <linearGradient
+       x1="22.029089"
+       y1="17.152563"
+       x2="146.39938"
+       y2="140.45406"
+       id="linearGradient9086"
+       xlink:href="#linearGradient8303"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.855373,1.169081)" />
+    <pattern
+       id="pattern10642"
+       patternTransform="translate(15.00000,-5.000000)"
+       height="13.750009"
+       width="14.142157"
+       patternUnits="userSpaceOnUse">
+      <g
+         transform="translate(31.25001,-2.928924)"
+         style="fill:#ffffff;fill-opacity:1.0000000"
+         id="g10644">
+        <rect
+           transform="matrix(0.707107,0.707107,-0.707107,0.707107,0.000000,0.000000)"
+           y="21.668146"
+           x="-17.526024"
+           height="5.0000029"
+           width="5.0000029"
+           id="rect10646"
+           style="stroke:none;stroke-width:1.2500000;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+        <rect
+           transform="matrix(0.707107,0.707107,-0.707107,0.707107,0.000000,0.000000)"
+           y="26.390863"
+           x="-12.803310"
+           height="5.0000057"
+           width="5.0000057"
+           id="rect10648"
+           style="stroke:none;stroke-width:1.2500000;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+        <rect
+           transform="matrix(0.707107,0.707107,-0.707107,0.707107,0.000000,0.000000)"
+           y="16.668142"
+           x="-12.526019"
+           height="5.0000057"
+           width="5.0000057"
+           id="rect10650"
+           style="stroke:none;stroke-width:1.2500000;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+        <rect
+           transform="matrix(0.707107,0.707107,-0.707107,0.707107,0.000000,0.000000)"
+           y="21.390858"
+           x="-7.8033042"
+           height="5.0000057"
+           width="5.0000057"
+           id="rect10652"
+           style="stroke:none;stroke-width:1.2500000;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+      </g>
+    </pattern>
+  </defs>
+  <g
+     id="g5630">
+    <path
+       d="M 18.000000,1.9999995 L 121.00000,1.9999995 C 129.86400,1.9999995 137.00000,9.1359995 137.00000,18.000000 L 137.00000,171.00000 C 137.00000,179.86400 129.86400,187.00000 121.00000,187.00000 L 18.000000,187.00000 C 9.1360000,187.00000 2.0000000,179.86400 2.0000000,171.00000 L 2.0000000,18.000000 C 2.0000000,9.1359995 9.1360000,1.9999995 18.000000,1.9999995 z "
+       style="fill:url(#linearGradient4853);fill-opacity:1.0000000;stroke:black;stroke-width:0.70000000;stroke-miterlimit:4.0000000;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000"
+       id="rect1306" />
+  </g>
+  <path
+     d="M 22.166666,10.000000 L 116.58333,10.000000 C 124.70867,10.000000 131.25000,16.541333 131.25000,24.666666 L 131.25000,164.91666 C 131.25000,173.04200 124.70867,179.58333 116.58333,179.58333 L 22.166666,179.58333 C 14.041333,179.58333 7.5000000,173.04200 7.5000000,164.91666 L 7.5000000,24.666666 C 7.5000000,16.541333 14.041333,10.000000 22.166666,10.000000 z "
+     style="fill:url(#linearGradient8318);fill-opacity:1.0000000;stroke:none;stroke-width:0.20000000;stroke-miterlimit:4.0000000;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000"
+     id="path1385" />
+  <path
+     d="M 22.166666,10.000000 L 116.58333,10.000000 C 124.70867,10.000000 131.25000,16.541333 131.25000,24.666666 L 131.25000,164.91666 C 131.25000,173.04200 124.70867,179.58333 116.58333,179.58333 L 22.166666,179.58333 C 14.041333,179.58333 7.5000000,173.04200 7.5000000,164.91666 L 7.5000000,24.666666 C 7.5000000,16.541333 14.041333,10.000000 22.166666,10.000000 z "
+     style="fill:url(#pattern10642);fill-opacity:1.0000000;stroke:none;stroke-width:0.20000000;stroke-miterlimit:4.0000000;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000"
+     id="path9846" />
+  <path
+     d="M 22.156250,9.3750000 C 13.695478,9.3750000 6.8750000,16.195478 6.8750000,24.656250 L 6.8750000,164.90625 C 6.8750000,173.36703 13.695478,180.21875 22.156250,180.21875 L 116.59375,180.21875 C 125.05453,180.21875 131.87500,173.36703 131.87500,164.90625 L 131.87500,24.656250 C 131.87500,16.195478 125.05453,9.3750000 116.59375,9.3750000 L 22.156250,9.3750000 z M 22.156250,10.625000 L 116.59375,10.625000 C 124.38365,10.625000 130.62500,16.866356 130.62500,24.656250 L 130.62500,164.90625 C 130.62500,172.69615 124.38365,178.96875 116.59375,178.96875 L 22.156250,178.96875 C 14.366356,178.96875 8.1250000,172.69615 8.1250000,164.90625 L 8.1250000,24.656250 C 8.1250000,16.866356 14.366356,10.625000 22.156250,10.625000 z "
+     style="fill:url(#linearGradient9086);fill-opacity:1.0000000;stroke:none;stroke-width:1.2500000;stroke-miterlimit:4.0000000;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000"
+     id="path2154" />
+
+  
+
+  <metadata>
+    <rdf:RDF 
+     xmlns="http://web.resource.org/cc/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <Work rdf:about="">
+        <dc:title>card</dc:title>
+        <dc:description></dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>card</rdf:li>
+            <rdf:li>back</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:publisher>
+           <Agent>
+             <dc:title></dc:title>
+           </Agent>
+         </dc:publisher>
+         <dc:creator>
+           <Agent>
+             <dc:title>Nicu Buculei</dc:title>
+           </Agent>
+        </dc:creator>
+         <dc:rights>
+           <Agent>
+             <dc:title>Nicu Buculei</dc:title>
+           </Agent>
+        </dc:rights>
+        <dc:date></dc:date>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <license rdf:resource="http://web.resource.org/cc/PublicDomain" />
+        <dc:language>en</dc:language>
+      </Work>
+
+      <License rdf:about="http://web.resource.org/cc/PublicDomain">
+         <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+         <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+         <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+      </License>
+
+    </rdf:RDF>
+  </metadata>
+</svg>
