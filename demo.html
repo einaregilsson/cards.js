@@ -20,6 +20,7 @@
 				width:600px;
 				display:block;
 				height:150px;
+				white-space:pre;
 			}
 			
 			#card-table {
@@ -41,8 +42,10 @@
 	<body>
 		<h1>Cards.js</h1>
 		<code>
-			cards.init({table:'#card-table'});
-		
+cards.init({table:'#card-table'});
+deck = new cards.Deck();
+deck.addCards(cards.all)
+deck.render({immediate:true});
 		</code>
 		<button onclick="execute()">Execute</button>
 		<div id="card-table">

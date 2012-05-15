@@ -12,32 +12,33 @@ var cards = (function() {
 	var ANIMATION_SPEED = 500;
 	var CARDBACK = { x: 0, y: -4 * CARD_SIZE.height };
 	var HCARDBACK = { x: -8 * CARD_SIZE.height, y: -5 * CARD_SIZE.height};
-
 	var zIndexCounter = 1;
 	
+	var table = {};
 	var all = []; //All the cards created.
 	
 	function init(options) {
 		options = options || {};
-		all = [];
 		var start = options.acesHigh ? 2 : 1;
 		var end = start + 12;
 		if (!options.table) {
 			alert('You must set the table id');
 		}
-		var table = $(options.table);
-		
+		table.el = $(options.table);
+		if ($(table.el).css('position') == 'static') {
+			$(table.el).css('position', 'relative');
+		}
 		for (var i = start; i <= end; i++) {
-			all.push(new Card('h', i, table));
-			all.push(new Card('s', i, table));
-			all.push(new Card('d', i, table));
-			all.push(new Card('c', i, table));
+			all.push(new Card('h', i, table.el));
+			all.push(new Card('s', i, table.el));
+			all.push(new Card('d', i, table.el));
+			all.push(new Card('c', i, table.el));
 		}
 		if (options.blackJoker) {
-			all.push(new Card('bj', 0, table));
+			all.push(new Card('bj', 0, table.el));
 		}
 		if (options.redJoker) {
-			all.push(new Card('rj', 0, table));
+			all.push(new Card('rj', 0, table.el));
 		}
 		shuffle(all);
 	}
@@ -184,12 +185,82 @@ var cards = (function() {
 			$(this.el).css('z-index', zIndexCounter++);
 		}		
 	};
+	
+	function Container() {
+	
+	}
+	
+	Container.prototype = new Array();
+	Container.prototype.extend = function(obj) {
+		for (var prop in obj) {
+			this[prop] = obj[prop];
+		}
+	}
+	Container.prototype.extend({
+		addCards : function(cards) {
+			for (var i = 0; i < cards.length;i++) {
+				this.push(cards[i]);
+				cards[i].container = this;
+			}
+		},
+
+		immediateRender : function() {
+			for (var i=0;i<this.length;i++) {
+				var card = this[i];
+				if (this.faceUp) {
+					card.showCard();
+				} else {
+					card.hideCard();
+				}
+				zIndexCounter++;
+				$(card.el).css({top : card.targetTop, left: card.targetLeft, 'z-index' : zIndexCounter});
+			}
+		},
+		
+		topCard : function() {
+			return this[this.length-1];
+		},
+		
+		toString: function() {
+			return 'Container';
+		}
+	});
+	
+	function Deck(options) {
+		options = options || {};
+		this.x = options.x || $(table.el).width()/2;
+		this.y = options.y || $(table.el).height()/2;
+		this.faceUp = options.faceUp;
+	}
+	
+	Deck.prototype = new Container();
+	Deck.prototype.extend({
+		render : function(options) {
+			var left = Math.round(this.x-CARD_SIZE.width/2, 0);
+			var top = Math.round(this.y-CARD_SIZE.height/2, 0);
+			for (var i=0;i<this.length;i++) {
+				if (i > 0 && i % CONDENSE_COUNT == 0) {
+					top-=1;
+					left-=1;
+				}
+				this[i].targetTop = top;
+				this[i].targetLeft = left;
+			}
+			if (options.immediate) {
+				this.immediateRender();
+			} else {
+			
+			}
+		}
+	});
 
 	return {
 		init : init,
 		all : all,
 		SIZE : CARD_SIZE,
 		Card : Card,
+		Container : Container,
+		Deck : Deck,
 		shuffle: shuffle
 	};
 })();
