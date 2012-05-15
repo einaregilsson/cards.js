@@ -21,12 +21,20 @@
 				display:block;
 				height:150px;
 				white-space:pre;
+				padding:4px;
 			}
 			
 			#card-table {
 				background-color:green;
 				height:400px;
 				width:600px;
+				border:solid 4px brown;
+				border-radius:8px;
+				-webkit-border-radius:8px;
+				-moz-border-radius:8px;
+				-ms-border-radius:8px;
+				-o-border-radius:8px;
+				box-shadow:#333 0px 0px 7px;
 			}
 			a:visited {color:blue;}
 		</style>
@@ -42,10 +50,14 @@
 	<body>
 		<h1>Cards.js</h1>
 		<code>
+//Start by initalizing the library
 cards.init({table:'#card-table'});
-deck = new cards.Deck();
-deck.addCards(cards.all)
-deck.render({immediate:true});
+//Create a new deck of cards
+deck = new cards.Deck(); 
+//cards.all contains all cards, put them all in the deck
+deck.addCards(cards.all); 
+//No animation here, just get the deck onto the table.
+deck.render({immediate:true}); 
 		</code>
 		<button onclick="execute()">Execute</button>
 		<div id="card-table">
