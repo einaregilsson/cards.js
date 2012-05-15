@@ -15,25 +15,32 @@ var cards = (function() {
 
 	var zIndexCounter = 1;
 	
+	var all = []; //All the cards created.
+	
 	function init(options) {
 		options = options || {};
-		this.all = [];
+		all = [];
 		var start = options.acesHigh ? 2 : 1;
 		var end = start + 12;
+		if (!options.table) {
+			alert('You must set the table id');
+		}
+		var table = $(options.table);
+		
 		for (var i = start; i <= end; i++) {
-			this.deck.push(new Card('h', i));
-			this.deck.push(new Card('s', i));
-			this.deck.push(new Card('d', i));
-			this.deck.push(new Card('c', i));
+			all.push(new Card('h', i, table));
+			all.push(new Card('s', i, table));
+			all.push(new Card('d', i, table));
+			all.push(new Card('c', i, table));
 		}
 		if (options.blackJoker) {
-			this.deck.push(new Card('bj', 0));
+			all.push(new Card('bj', 0, table));
 		}
 		if (options.redJoker) {
-			this.deck.push(new Card('rj', 0));
+			all.push(new Card('rj', 0, table));
 		}
-		shuffle(this.deck);
- 	}
+		shuffle(all);
+	}
 
     function shuffle(deck) {
         //Fisher yates shuffle
@@ -48,18 +55,26 @@ var cards = (function() {
         }
     }
 	
-	function Card(suit, rank) {
-		this.init(suit, rank);
+	function Card(suit, rank, table) {
+		this.init(suit, rank, table);
 	}
 	
 	Card.prototype = {
-		init: function (suit, rank) {
+		init: function (suit, rank, table) {
 			this.shortName = suit + rank;
 			this.suit = suit;
 			this.rank = rank;
 			this.name = suit.toUpperCase()+rank;
 			this.faceUp = false;
-			this.el = $('<div/>').addClass('card');
+			this.el = $('<div/>').css({
+				width:'71px',
+				height:'96px',
+				"background-image":'url(img/cards.png)',
+				position:'absolute',
+				cursor:'pointer'	
+			}).addClass('card').appendTo($(table));
+			this.showCard();
+			this.moveToFront();
 		},
 
 		toString: function () {
@@ -67,9 +82,8 @@ var cards = (function() {
 		},
 
 		moveTo : function(x, y, speed, callback) {
-			$(this.el).animate(
 			var props = {top:y-(CARD_SIZE.height/2),left:x-(CARD_SIZE.width/2)};
-			$(this.el).animate({props, speed || ANIMATION_SPEED, callback);
+			$(this.el).animate(props, speed || ANIMATION_SPEED, callback);
 		},
 		
 		rotate : function(angle) {
@@ -144,7 +158,7 @@ var cards = (function() {
 				}
 				this.rotate(0);
 			}
-			$(this.el).setBackground(xpos + 'px', ypos + 'px');
+			$(this.el).css('background-position', xpos + 'px ' + ypos + 'px');
 		},
 
 		hideCard : function(position) {
@@ -153,12 +167,12 @@ var cards = (function() {
 			}
 			var h = $(this.el).height(), w = $(this.el).width();
 			if (position == TOP || position == BOTTOM) {
-				$(this.el).setBackground(CARDBACK.x + 'px', CARDBACK.y + 'px');
+				$(this.el).css('background-position', CARDBACK.x + 'px ' + CARDBACK.y + 'px');
 				if (w>h) {
 					$(this.el).height(w).width(h);
 				}
 			} else {
-				$(this.el).setBackground(HCARDBACK.x + 'px', HCARDBACK.y + 'px');
+				$(this.el).css('background-position', HCARDBACK.x + 'px ' + HCARDBACK.y + 'px');
 				if (h>w) {
 					$(this.el).height(w).width(h);
 				}
@@ -173,22 +187,10 @@ var cards = (function() {
 
 	return {
 		init : init,
-		all : [],
-		SIZE = CARD_SIZE,,
+		all : all,
+		SIZE : CARD_SIZE,
 		Card : Card,
 		shuffle: shuffle
 	};
 })();
-
-
-cards.init({acesHigh:true,redJoker:true})
-var deck = new cards.Deck({faceUp:true, x:500, y:300});
-var pile = new cards.Pile({faceUp:true, x:500, y:300});
-var cell = new cards.Cell({faceUp:true});
-
-deck.render();
-pile.render();
-card.flip({immediate:true});
-deck.addCard(cards.all.drawCard());
-deck.render({immediate:true});
 

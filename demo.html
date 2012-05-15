@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>cards.js - Write card games in Javascript.</title>
+		<style>
+			html { background-color:#ddd; }
+			body { 
+				border-radius:3px; 
+				box-shadow:black 0px 0px 2px; 
+				width: 600px; 
+				background:white; 
+				margin:20px auto; 
+				border:solid 1px black; 
+				font-family: arial, sans-serif; 
+				padding:50px;  
+			}
+			
+			code {
+				border:solid 1px black;
+				width:600px;
+				display:block;
+				height:150px;
+			}
+			
+			#card-table {
+				background-color:green;
+				height:400px;
+				width:600px;
+			}
+			a:visited {color:blue;}
+		</style>
+		<script src="jquery-1.7.min.js"></script>
+		<script src="cards.js"></script>
+		<script>
+			function execute() {
+				var code = $('code').text();
+				eval(code);
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Cards.js</h1>
+		<code>
+			cards.init({table:'#card-table'});
+		
+		</code>
+		<button onclick="execute()">Execute</button>
+		<div id="card-table">
+		</div>
+	</body>
+</html>
