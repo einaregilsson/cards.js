@@ -73,7 +73,7 @@ var cards = (function() {
 				"background-image":'url(img/cards.png)',
 				position:'absolute',
 				cursor:'pointer'	
-			}).addClass('card').appendTo($(table));
+			}).addClass('card').data('card', this).appendTo($(table));
 			this.showCard();
 			this.moveToFront();
 		},
@@ -197,11 +197,29 @@ var cards = (function() {
 		}
 	}
 	Container.prototype.extend({
+		addCard : function(card) {
+			this.addCards([card]);
+		},
+		
 		addCards : function(cards) {
 			for (var i = 0; i < cards.length;i++) {
-				this.push(cards[i]);
-				cards[i].container = this;
+				var card = cards[i];
+				if (card.container) {
+					card.container.removeCard(card);
+				}
+				this.push(card);
+				card.container = this;
 			}
+		},
+		
+		removeCard : function(card) {
+			for (var i=0; i< this.length;i++) {
+				if (this[i] == card) {
+					this.splice(i, 1);
+					return true;
+				}
+			}
+			return false;
 		},
 
 		init : function(options) {
@@ -211,6 +229,25 @@ var cards = (function() {
 			this.faceUp = options.faceUp;
 		},
 
+		click : function(func, context) {
+			if (!this._click) {
+				this._click = [];
+				var me = this;
+				$('.card').click(function() {
+					var card = $(this).data('card');
+					alert(card.container);
+					if (card.container === me) {
+						alert(1);
+						for (var i = 0; i < me._click; i++) {
+							var obj = me._click[i];
+							obj.func.call(obj.context||window, card);
+						}
+					}
+				});
+			}
+			this._click.push({callback:func, context:context});
+		},
+		
 		render : function(options) {
 			options = options || {};
 			var speed = options.speed || ANIMATION_SPEED;
@@ -284,10 +321,19 @@ var cards = (function() {
 			return 'Deck';
 		},
 		
-		deal : function(count, hands) {
-			if (!this.dealCounter) {
-				this.dealCounter = count * hands.length;
+		deal : function(count, hands, speed) {
+			var me = this;
+			var i = 0;
+			var totalCount = count*hands.length;
+			function dealOne() {
+				if (me.length == 0 || i > totalCount) {
+					return;
+				}
+				hands[i%hands.length].addCard(me.topCard());
+				i++;
+				hands[i%hands.length].render({callback:dealOne, speed:speed});
 			}
+			dealOne();
 		}
 	});
 

@@ -22,6 +22,7 @@
 				height:150px;
 				white-space:pre;
 				padding:4px;
+				display:none;
 			}
 			
 			#card-table {
@@ -41,19 +42,19 @@
 		<script src="jquery-1.7.min.js"></script>
 		<script src="cards.js"></script>
 		<script>
+			var exampleCounter = 1;
 			function execute() {
-				var code = $('code').text();
+				var code = $('code#ex' + exampleCounter).text();
 				eval(code);
+				$('code#ex' + exampleCounter).hide();
+				exampleCounter++;
+				$('code#ex' + exampleCounter).css('display', 'block');
 			}
 		</script>
 	</head>
 	<body>
 		<h1>Cards.js</h1>
-		<div style="border:solid 1px black; width:90px; height:140px" >
-		<embed src="svg/c6.svg" type="image/svg+xml" />
-		<embed src="svg/bluecardback.svg" type="image/svg+xml" />
-		<div>
-		<code>
+		<code id="ex1" style="display:block">
 //Start by initalizing the library
 cards.init({table:'#card-table'});
 //Create a new deck of cards
@@ -61,7 +62,25 @@ deck = new cards.Deck();
 //cards.all contains all cards, put them all in the deck
 deck.addCards(cards.all); 
 //No animation here, just get the deck onto the table.
-deck.render({immediate:true}); 
+deck.render({immediate:true});
+		</code>
+		<code id="ex2">
+//Now lets create a couple of hands, one face down, one face up.
+upperhand = new cards.Hand({faceUp:false, y:50});
+lowerhand = new cards.Hand({faceUp:true, y:350});
+//Deck has a built in method to deal to hands.
+deck.deal(5, [upperhand, lowerhand], 50)
+		</code>
+		<code id="ex3">
+			lowerhand.click(function(card) {
+				alert(card);
+			});
+			deck.click(function(card){
+				if (card === deck.topCard()) {
+					lowerhand.addCard(deck.topCard());
+					lowerhand.render();
+				}
+			});
 		</code>
 		<button onclick="execute()">Execute</button>
 		<div id="card-table">
