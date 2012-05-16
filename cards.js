@@ -204,16 +204,50 @@ var cards = (function() {
 			}
 		},
 
-		immediateRender : function() {
+		init : function(options) {
+			options = options || {};
+			this.x = options.x || $(table.el).width()/2;
+			this.y = options.y || $(table.el).height()/2;
+			this.faceUp = options.faceUp;
+		},
+
+		render : function(options) {
+			options = options || {};
+			var speed = options.speed || ANIMATION_SPEED;
+			this.calcPosition(options);
 			for (var i=0;i<this.length;i++) {
 				var card = this[i];
-				if (this.faceUp) {
-					card.showCard();
-				} else {
-					card.hideCard();
-				}
 				zIndexCounter++;
-				$(card.el).css({top : card.targetTop, left: card.targetLeft, 'z-index' : zIndexCounter});
+				card.moveToFront();
+				var top = parseInt($(card.el).css('top'));
+				var left = parseInt($(card.el).css('left'));
+				if (top != card.targetTop || left != card.targetLeft) {
+					var props = {top:card.targetTop, left:card.targetLeft};
+					if (options.immediate) {
+						$(card.el).css(props);
+					} else {
+						$(card.el).animate(props, speed);
+					}
+				}
+			}
+			var me = this;
+			var flip = function(){
+				for (var i=0;i<me.length;i++) {
+					if (me.faceUp) {
+						me[i].showCard();
+					} else {
+						me[i].hideCard();
+					}
+				}
+			}
+			if (options.immediate) {
+				flip();
+			} else {
+				setTimeout(flip, speed /2);
+			}
+			
+			if (options.callback) {
+				setTimeout(options.callback, speed);
 			}
 		},
 		
@@ -227,15 +261,13 @@ var cards = (function() {
 	});
 	
 	function Deck(options) {
-		options = options || {};
-		this.x = options.x || $(table.el).width()/2;
-		this.y = options.y || $(table.el).height()/2;
-		this.faceUp = options.faceUp;
+		this.init(options);
 	}
 	
 	Deck.prototype = new Container();
 	Deck.prototype.extend({
-		render : function(options) {
+		calcPosition : function(options) {
+			options = options || {};
 			var left = Math.round(this.x-CARD_SIZE.width/2, 0);
 			var top = Math.round(this.y-CARD_SIZE.height/2, 0);
 			for (var i=0;i<this.length;i++) {
@@ -246,13 +278,61 @@ var cards = (function() {
 				this[i].targetTop = top;
 				this[i].targetLeft = left;
 			}
-			if (options.immediate) {
-				this.immediateRender();
-			} else {
-			
+		},
+		
+		toString : function() {
+			return 'Deck';
+		},
+		
+		deal : function(count, hands) {
+			if (!this.dealCounter) {
+				this.dealCounter = count * hands.length;
 			}
 		}
 	});
+
+	function Hand(options) {
+		this.init(options);
+	}
+	Hand.prototype = new Container();
+	Hand.prototype.extend({
+		calcPosition : function(options) {
+			options = options || {};
+			var width = CARD_SIZE.width + (this.length-1)*CARD_PADDING;
+			var left = Math.round(this.x - width/2);
+			var top = Math.round(this.y-CARD_SIZE.height/2, 0);
+			for (var i=0;i<this.length;i++) {
+				this[i].targetTop = top;
+				this[i].targetLeft = left+i*CARD_PADDING;
+			}
+		},
+		
+		toString : function() {
+			return 'Hand';
+		}
+	});
+	
+	function Pile(options) {
+		this.init(options);
+	}
+	
+	Pile.prototype = new Container();
+	Pile.prototype.extend({
+		calcPosition : function(options) {
+			options = options || {};
+		},
+		
+		toString : function() {
+			return 'Pile';
+		},
+		
+		deal : function(count, hands) {
+			if (!this.dealCounter) {
+				this.dealCounter = count * hands.length;
+			}
+		}
+	});
+	
 
 	return {
 		init : init,
@@ -261,6 +341,8 @@ var cards = (function() {
 		Card : Card,
 		Container : Container,
 		Deck : Deck,
+		Hand : Hand,
+		Pile : Pile,
 		shuffle: shuffle
 	};
 })();
