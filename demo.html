@@ -69,20 +69,31 @@ deck.render({immediate:true});
 upperhand = new cards.Hand({faceUp:false, y:50});
 lowerhand = new cards.Hand({faceUp:true, y:350});
 //Deck has a built in method to deal to hands.
-deck.deal(5, [upperhand, lowerhand], 50)
+deck.deal(25, [upperhand, lowerhand], 50)
 		</code>
 		<code id="ex3">
-			lowerhand.click(function(card) {
-				alert(card);
-			});
-			deck.click(function(card){
-				if (card === deck.topCard()) {
-					lowerhand.addCard(deck.topCard());
-					lowerhand.render();
-				}
-			});
+//Lets setup a handler to draw cards
+deck.click(function(card){
+	if (card === deck.topCard()) {
+		//Normally you'd have some more specific logic here
+		//to determine whether we can play a card right now.
+		lowerhand.addCard(deck.topCard());
+		lowerhand.render();
+	}
+});
+alert('Try clicking the deck now');
 		</code>
-		<button onclick="execute()">Execute</button>
+		<code id="ex4">
+function computerPlay() {
+	for (var i = 0; i < upperhand.length; i++) {
+		var topcard = discardPile.topCard();
+		if (upperhand[i].rank == topCard.rank) {
+			
+		}
+	}
+}
+		</code>
+		<button onclick="execute()">Next</button>
 		<div id="card-table">
 		</div>
 	</body>
