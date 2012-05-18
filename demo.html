@@ -3,25 +3,33 @@
 	<head>
 		<title>cards.js - Write card games in Javascript.</title>
 		<style>
-			html { background-color:#ddd; }
+			html { background-color:#092E20; }
 			body { 
-				border-radius:3px; 
+				border-radius:8px; 
 				box-shadow:black 0px 0px 2px; 
 				width: 600px; 
-				background:white; 
+				background:#FFF; 
 				margin:20px auto; 
 				border:solid 1px black; 
 				font-family: arial, sans-serif; 
 				padding:50px;  
 			}
-			
+			#buttons {
+				text-align:center;
+			}
+			button {
+				height:30px;
+				width:100px;
+				margin:8px auto;
+			}
 			code {
-				border:solid 1px black;
-				width:600px;
+				border:dotted 1px black;
+				width:590px;
+				margin:auto;
 				display:block;
 				height:150px;
 				white-space:pre;
-				padding:4px;
+				padding:7px;
 				display:none;
 			}
 			
@@ -29,13 +37,13 @@
 				background-color:green;
 				height:400px;
 				width:600px;
-				border:solid 4px brown;
+				border:solid 6px brown;
 				border-radius:8px;
 				-webkit-border-radius:8px;
 				-moz-border-radius:8px;
 				-ms-border-radius:8px;
 				-o-border-radius:8px;
-				box-shadow:#333 0px 0px 7px;
+				box-shadow:#111 1px 1px 2px;
 			}
 			a:visited {color:blue;}
 		</style>
@@ -43,19 +51,47 @@
 		<script src="cards.js"></script>
 		<script>
 			var exampleCounter = 1;
+			var max = 0;
+			function stateChange() {
+				if (exampleCounter == 1) {
+					$('#exec').attr('disabled', 'disabled');
+				} else {
+					$('#prev').removeAttr('disabled');
+				}
+				if (exampleCounter > max) {
+					$('#exec').removeAttr('disabled');
+				} else {
+					$('#exec').attr('disabled', 'disabled');
+				}
+				if (exampleCounter <= max) {
+					$('#next').removeAttr('disabled');
+				} else {
+					$('#next').attr('disabled', 'disabled');
+				}
+				$('code').hide();
+				$('code#ex' + exampleCounter).css('display', 'block');
+			}
+			function next() {
+				exampleCounter++;
+				stateChange();
+			}
+			function prev() {
+				exampleCounter--;
+				stateChange();
+			}
 			function execute() {
 				var code = $('code#ex' + exampleCounter).text();
 				eval(code);
-				$('code#ex' + exampleCounter).hide();
-				exampleCounter++;
-				$('code#ex' + exampleCounter).css('display', 'block');
+				max = exampleCounter;
+				stateChange();
 			}
 		</script>
 	</head>
 	<body>
 		<h1>Cards.js</h1>
-		<code id="ex1" style="display:block">
-//Start by initalizing the library
+		<h3>The easiest way to write card games in Javascript</h3>
+		<p>cards.js is a library to write good looking card games in javascript. It's not a framework, it does not try to tell you how to write your game logic, it's only about rendering playing cards, animating them and giving you a nice and simple way to use them in your games.</p>
+		<code id="ex1" style="display:block">//Start by initalizing the library
 cards.init({table:'#card-table'});
 //Create a new deck of cards
 deck = new cards.Deck(); 
@@ -64,36 +100,36 @@ deck.addCards(cards.all);
 //No animation here, just get the deck onto the table.
 deck.render({immediate:true});
 		</code>
-		<code id="ex2">
-//Now lets create a couple of hands, one face down, one face up.
+		<code id="ex2">//Now lets create a couple of hands, one face down, one face up.
 upperhand = new cards.Hand({faceUp:false, y:50});
 lowerhand = new cards.Hand({faceUp:true, y:350});
 //Deck has a built in method to deal to hands.
-deck.deal(25, [upperhand, lowerhand], 50)
+deck.deal(5, [upperhand, lowerhand], 50)
 		</code>
-		<code id="ex3">
-//Lets setup a handler to draw cards
+		<code id="ex3">//Lets setup a handler to draw cards
 deck.click(function(card){
 	if (card === deck.topCard()) {
-		//Normally you'd have some more specific logic here
-		//to determine whether we can play a card right now.
 		lowerhand.addCard(deck.topCard());
 		lowerhand.render();
 	}
 });
 alert('Try clicking the deck now');
 		</code>
-		<code id="ex4">
-function computerPlay() {
-	for (var i = 0; i < upperhand.length; i++) {
-		var topcard = discardPile.topCard();
-		if (upperhand[i].rank == topCard.rank) {
-			
-		}
-	}
-}
+		<code id="ex4">//Let's move the deck and setup a discard pile
+deck.x -= 50;
+deck.render()
+discardPile = new cards.Deck({faceUp:true});
+discardPile.x += 50;
+deck.render();
+discardPile.addCard(deck.topCard());
+discardPile.render();
+
 		</code>
-		<button onclick="execute()">Next</button>
+		<div id="buttons">
+			<button id="prev" onclick="prev()" disabled>Previous</button>
+			<button id="exec" onclick="execute()">Execute code</button>
+			<button id="next" onclick="next()" disabled>Next</button>
+		</div>
 		<div id="card-table">
 		</div>
 	</body>

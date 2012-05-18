@@ -14,6 +14,16 @@ var cards = (function() {
 	var zIndexCounter = 1;
 	var all = []; //All the cards created.
 	
+	function mouseEvent(ev) {
+		var card = $(this).data('card');
+		if (card.container) {
+			var handler = card.container._click;
+			if (handler) {
+				handler.func.call(handler.context||window, card, ev);
+			}
+		}
+	}
+	
 	function init(options) {
 		if (options) {
 			for (var i in options) {
@@ -40,6 +50,8 @@ var cards = (function() {
 		if (opt.redJoker) {
 			all.push(new Card('rj', 0, opt.table));
 		}
+		
+		$('.card').click(mouseEvent);
 		shuffle(all);
 	}
 
@@ -75,9 +87,6 @@ var cards = (function() {
 				cursor:'pointer'	
 			}).addClass('card').data('card', this).appendTo($(table));
 			this.showCard();
-			$(this.el).click(function() {
-				alert($(this).data('card').name);
-			});
 			this.moveToFront();
 		},
 
@@ -113,7 +122,7 @@ var cards = (function() {
 		},
 
 		hideCard : function(position) {
-			var y = opt.cardback == 'red' ? -2 : -1;
+			var y = opt.cardback == 'red' ? 0*opt.cardSize.height : -1*opt.cardSize.height;
 			$(this.el).css('background-position', '0px ' + y + 'px');
 			this.rotate(0);
 		},
@@ -167,20 +176,15 @@ var cards = (function() {
 		},
 
 		click : function(func, context) {
-			if (!this._click) {
-				this._click = [];
-				var me = this;
-				$('.card').click(function() {
-					var card = $(this).data('card');
-					if (card.container === me) {
-						for (var i = 0; i < me._click; i++) {
-							var obj = me._click[i];
-							obj.func.call(obj.context||window, card);
-						}
-					}
-				});
-			}
-			this._click.push({callback:func, context:context});
+			this._click = {func:func,context:context};
+		},
+
+		mousedown : function(func, context) {
+			this._mousedown = {func:func,context:context};
+		},
+		
+		mouseup : function(func, context) {
+			this._mouseup = {func:func,context:context};
 		},
 		
 		render : function(options) {
@@ -194,7 +198,7 @@ var cards = (function() {
 				var top = parseInt($(card.el).css('top'));
 				var left = parseInt($(card.el).css('left'));
 				if (top != card.targetTop || left != card.targetLeft) {
-					var props = {top:card.targetTop, left:card.targetLeft};
+					var props = {top:card.targetTop, left:card.targetLeft, queue:false};
 					if (options.immediate) {
 						$(card.el).css(props);
 					} else {
@@ -262,12 +266,12 @@ var cards = (function() {
 			var i = 0;
 			var totalCount = count*hands.length;
 			function dealOne() {
-				if (me.length == 0 || i > totalCount) {
+				if (me.length == 0 || i == totalCount) {
 					return;
 				}
 				hands[i%hands.length].addCard(me.topCard());
-				i++;
 				hands[i%hands.length].render({callback:dealOne, speed:speed});
+				i++;
 			}
 			dealOne();
 		}
