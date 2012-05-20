@@ -22,7 +22,13 @@
 				width:100px;
 				margin:8px auto;
 			}
+			
+			h1 {
+				font-size:60px;
+				text-align:center;
+			}
 			code {
+				background-color:#F9FCA2;
 				border:dotted 1px black;
 				width:590px;
 				margin:auto;
@@ -117,12 +123,13 @@ alert('Try clicking the deck now');
 		</code>
 		<code id="ex4">//Let's move the deck and setup a discard pile
 deck.x -= 50;
-deck.render()
+deck.render();
 discardPile = new cards.Deck({faceUp:true});
 discardPile.x += 50;
-deck.render();
-discardPile.addCard(deck.topCard());
-discardPile.render();
+deck.render({callback:function() {
+	discardPile.addCard(deck.topCard());
+	discardPile.render();
+});
 
 		</code>
 		<div id="buttons">
