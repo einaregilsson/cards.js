@@ -26,6 +26,8 @@
 			h1 {
 				font-size:60px;
 				text-align:center;
+				padding:0px;
+				margin:0px;
 			}
 			code {
 				background-color:#F9FCA2;
@@ -129,8 +131,17 @@ discardPile.x += 50;
 deck.render({callback:function() {
 	discardPile.addCard(deck.topCard());
 	discardPile.render();
+}});
+		</code>
+		<code id="ex5">//Lets allow you to send cards to the discard pile
+lowerhand.click(function(card){
+	if (card.suit == discardPile.topCard().suit 
+		|| card.rank == discardPile.topCard().rank) {
+		discardPile.addCard(card);
+		discardPile.render();
+		//lowerhand.render();
+	}
 });
-
 		</code>
 		<div id="buttons">
 			<button id="prev" onclick="prev()" disabled>Previous</button>
