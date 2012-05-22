@@ -5,6 +5,7 @@
 		<style>
 			html { background-color:#092E20; }
 			body { 
+				position:relative;
 				border-radius:8px; 
 				box-shadow:black 0px 0px 2px; 
 				width: 600px; 
@@ -17,12 +18,21 @@
 			#buttons {
 				text-align:center;
 			}
+			
+			a img {
+				position: absolute; 
+				top: 0; 
+				right: 0; 
+				border: 0;			
+			}
 			button {
 				height:30px;
 				width:100px;
 				margin:8px auto;
 			}
-			
+			img.preload {
+				display:none;
+			}
 			h1 {
 				font-size:60px;
 				text-align:center;
@@ -98,7 +108,9 @@
 	<body>
 		<h1>Cards.js</h1>
 		<h3>The easiest way to write card games in Javascript</h3>
+		<a href="https://github.com/einaregilsson/cards.js"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>		
 		<p>cards.js is a library to write good looking card games in javascript. It's not a framework, it does not try to tell you how to write your game logic, it's only about rendering playing cards, animating them and giving you a nice and simple way to use them in your games.</p>
+		<img class="preload" src="img/cards.png"/>
 		<code id="ex1" style="display:block">//Start by initalizing the library
 cards.init({table:'#card-table'});
 //Create a new deck of cards
