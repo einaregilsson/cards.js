@@ -64,6 +64,20 @@
 				box-shadow:#111 1px 1px 2px;
 			}
 			a:visited {color:blue;}
+			
+			footer {
+				font-size : 12px;
+				color:grey;
+				margin:10px;
+			}
+			
+			footer a, footer a:visited{
+				color:grey;
+			}
+			
+			footer a:hover {
+				color:black;
+			}
 		</style>
 		<script src="jquery-1.7.min.js"></script>
 		<script src="cards.js"></script>
@@ -109,7 +123,8 @@
 		<h1>Cards.js</h1>
 		<h3>The easiest way to write card games in Javascript</h3>
 		<a href="https://github.com/einaregilsson/cards.js"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>		
-		<p>cards.js is a library to write good looking card games in javascript. It's not a framework, it does not try to tell you how to write your game logic, it's only about rendering playing cards, animating them and giving you a nice and simple way to use them in your games.</p>
+		<p>cards.js is a library to write card games in javascript. It's not a framework, it does not try to tell you how to write your game logic, it's only about rendering playing cards, animating them and giving you a nice and simple way to use them in your games. Below you can see and play with an interactive demo. We also have <a href="javascript:alert('not yet though')">documentation</a> and <a href="javascript:alert('coming soon');">annotated source code for a full game</a>, a simplified
+		version of Crazy Eights called Borderline Eights.</p>
 		<img class="preload" src="img/cards.png"/>
 		<code id="ex1" style="display:block">//Start by initalizing the library
 cards.init({table:'#card-table'});
@@ -162,5 +177,19 @@ lowerhand.click(function(card){
 		</div>
 		<div id="card-table">
 		</div>
+		<footer>
+			cards.js was created by <a href="http://einaregilsson.com">Einar Egilsson</a> and is licensed
+			under the MIT license. The card images were created by <a href="http://nicubunu.ro">Nicu Buculei</a> and are 
+			in the public domain. cards.js was extracted from the code used in 
+			<a href="http://www.spades-cardgame.com/">Spades</a>, 
+			<a href="http://www.hearts-cardgame.com/">Hearts</a>,
+			<a href="http://www.whist-cardgame.com/">Whist</a>,
+			<a href="http://www.gofish-cardgame.com/">Go Fish</a>,
+			<a href="http://www.crazyeights-cardgame.com/">Crazy Eights</a>,
+			<a href="http://www.solitaire-cardgame.com/">Solitaire</a>,
+			<a href="http://www.solitaire-cardgame.com/freecell/">FreeCell</a>,
+			<a href="http://www.idiot-cardgame.com/">Idiot</a> and
+			<a href="http://www.shithead-cardgame.com/">Shithead</a>, all written by Einar Egilsson.
+		</footer>
 	</body>
 </html>
