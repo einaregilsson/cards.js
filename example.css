@@ -1,0 +1,73 @@
+html { 
+	background-color:#092E20; 
+}
+
+body { 
+	position:relative;
+	border-radius:8px; 
+	box-shadow:black 0px 0px 2px; 
+	width: 600px; 
+	background:#FFF; 
+	margin:20px auto; 
+	border:solid 1px black; 
+	font-family: arial, sans-serif; 
+	padding:50px;  
+}
+#buttons {
+	text-align:center;
+}
+
+a img {
+	position: absolute; 
+	top: 0; 
+	right: 0; 
+	border: 0;			
+}
+button {
+	height:30px;
+	width:100px;
+	margin:8px auto;
+}
+img.preload {
+	display:none;
+}
+h1 {
+	font-size:60px;
+	text-align:center;
+	padding:0px;
+	margin:10px auto;
+}
+
+#card-table {
+	background-color:green;
+	height:400px;
+	width:600px;
+	border:solid 6px brown;
+	border-radius:8px;
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px;
+	-ms-border-radius:8px;
+	-o-border-radius:8px;
+	box-shadow:#111 1px 1px 2px;
+}
+a:visited {color:blue;}
+
+#deal {
+	position: absolute;
+	left:310px;
+	top:170px;
+}
+
+footer {
+	font-size : 12px;
+	color:grey;
+	margin:10px;
+}
+
+footer a, footer a:visited{
+	color:grey;
+}
+
+footer a:hover {
+	color:black;
+}

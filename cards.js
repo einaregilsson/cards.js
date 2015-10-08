@@ -261,12 +261,15 @@ var cards = (function() {
 			return 'Deck';
 		},
 		
-		deal : function(count, hands, speed) {
+		deal : function(count, hands, speed, callback) {
 			var me = this;
 			var i = 0;
 			var totalCount = count*hands.length;
 			function dealOne() {
 				if (me.length == 0 || i == totalCount) {
+					if (callback) {
+						callback();
+					}
 					return;
 				}
 				hands[i%hands.length].addCard(me.topCard());
