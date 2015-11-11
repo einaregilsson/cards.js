@@ -12,7 +12,7 @@ I have created a lot of javascript card games. As of 12.05.2012 I've made
 | <a href="http://www.crazyeights-cardgame.com/">Crazy Eights</a> 
 | <a href="http://www.solitaire-cardgame.com/">Solitaire</a> 
 | <a href="http://www.solitaire-cardgame.com/freecell/">FreeCell</a> 
-| <a href="http://www.idiot-cardgame.com/">Idiot</a> 
+| <a href="https://cardgames.io/idiot/">Idiot</a> 
 | <a href="http://www.shithead-cardgame.com/">Shithead</a> 
 
 
