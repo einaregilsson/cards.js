@@ -10,7 +10,7 @@ I have created a lot of javascript card games. As of 12.05.2012 I've made
 | <a href="https://cardgames.io/whist/">Whist</a> 
 | <a href="https://cardgames.io/gofish/">Go Fish</a> 
 | <a href="https://cardgames.io/crazyeights/">Crazy Eights</a> 
-| <a href="http://www.solitaire-cardgame.com/">Solitaire</a> 
+| <a href="https://cardgames.io/solitaire/">Solitaire</a> 
 | <a href="https://cardgames.io/freecell/">FreeCell</a> 
 | <a href="https://cardgames.io/idiot/">Idiot</a> 
 | <a href="https://cardgames.io/shithead/">Shithead</a> 
