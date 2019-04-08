@@ -337,3 +337,7 @@ var cards = (function() {
 	};
 })();
 
+if (typeof module !== 'undefined') {
+    module.exports = cards;
+}
+
