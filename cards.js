@@ -337,6 +337,7 @@ var cards = (function() {
 	};
 })();
 
+export default cards;
 if (typeof module !== 'undefined') {
     module.exports = cards;
 }
