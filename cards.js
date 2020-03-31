@@ -109,7 +109,7 @@ var cards = (function() {
 		},
 		
 		showCard : function() {
-			var offsets = { "c": 0, "d": 1, "h": 2, "s": 3 };
+			var offsets = { "c": 0, "d": 1, "h": 2, "s": 3, "rj": 2, "bj": 3 };
 			var xpos, ypos;
 			var rank = this.rank;
 			if (rank == 14) {
