@@ -1,5 +1,11 @@
 
 var cards = (function() {
+  const DeckType = Object.freeze({
+    STANDARD: 0,
+    EUCHRE: 1,
+    PINOCHLE: 2
+  });
+
   //The global options
   var opt = {
     cardSize: {
@@ -14,7 +20,7 @@ var cards = (function() {
     cardsUrl: 'img/cards.png',
     blackJoker: false,
     redJoker: false,
-    type: STANDARD,
+    type: DeckType.STANDARD,
     loop: 1
   };
   var zIndexCounter = 1;
@@ -41,16 +47,16 @@ var cards = (function() {
       }
     }
     switch (opt.type) {
-      case STANDARD:
+      case DeckType.STANDARD:
         opt.acesHigh = false;
         start = opt.acesHigh ? 2 : 1;
         end = start + 12;
         break;
-      case EUCHRE:
+      case DeckType.EUCHRE:
         start = 9;
         end = start + 5;
         break;
-      case PINOCHLE:
+      case DeckType.PINOCHLE:
         start = 9;
         end = start + 5;
         opt.loop = 2;
@@ -384,6 +390,7 @@ var cards = (function() {
     Deck: Deck,
     Hand: Hand,
     Pile: Pile,
+    DeckType: DeckType,
     shuffle: shuffle
   };
 })();
