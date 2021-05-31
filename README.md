@@ -16,6 +16,6 @@ I have created a lot of javascript card games. As of 12.05.2012 I've made
 | <a href="https://cardgames.io/shithead/">Shithead</a> 
 
 
-I've gotten many inquiries about how I make them, especially around the card animations, so I'm going to try to extract the generic parts of these games into a library for manipulating cards. To see an interactive demo and documentation you can go to <a href="http://einaregilsson.github.com/cards.js/">http://einaregilsson.github.com/cards.js/</a>.
+I've gotten many inquiries about how I make them, especially around the card animations, so I'm going to try to extract the generic parts of these games into a library for manipulating cards. To see an interactive demo and documentation you can go to <a href="http://einaregilsson.github.io/cards.js/">http://einaregilsson.github.io/cards.js/</a>.
 
 The card deck images are made by Nicu Buculei, and are in the public domain (found on openclipart.org).
