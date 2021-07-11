@@ -1,6 +1,6 @@
 
 //Tell the library which element to use for the table
-cards.init({table:'#card-table', type:STANDARD});
+cards.init({table:'#card-table', type:cards.DeckType.STANDARD});
 
 //Create a new deck of cards
 deck = new cards.Deck();
