@@ -1,20 +1,20 @@
 
 //Tell the library which element to use for the table
-cards.init({table:'#card-table'});
+cards.init({table:'#card-table', type:STANDARD});
 
 //Create a new deck of cards
-deck = new cards.Deck(); 
+deck = new cards.Deck();
 //By default it's in the middle of the container, put it slightly to the side
 deck.x -= 50;
 
 //cards.all contains all cards, put them all in the deck
-deck.addCards(cards.all); 
+deck.addCards(cards.all);
 //No animation here, just get the deck onto the table.
 deck.render({immediate:true});
 
 //Now lets create a couple of hands, one face down, one face up.
 upperhand = new cards.Hand({faceUp:false, y:60});
-lowerhand = new cards.Hand({faceUp:true, y:340});
+lowerhand = new cards.Hand({faceUp:true,  y:340});
 
 //Lets add a discard pile
 discardPile = new cards.Deck({faceUp:true});
@@ -47,7 +47,7 @@ deck.click(function(card){
 //the same suit or rank as the top card of the discard pile
 //then it's added to it
 lowerhand.click(function(card){
-	if (card.suit == discardPile.topCard().suit 
+	if (card.suit == discardPile.topCard().suit
 		|| card.rank == discardPile.topCard().rank) {
 		discardPile.addCard(card);
 		discardPile.render();
